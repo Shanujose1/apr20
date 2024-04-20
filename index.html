@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       body{
+       background-color: black;
+        margin-left: 60px;
+       }
+       #head1{
+        color : white;
+        
+       }
+       .btn{
+        background-color: white;
+        color: black;
+        padding: 10px;
+        width: 120px;
+        margin-right: 10px;
+       }
+       #clr{
+        padding: 10px;
+        width: 120px;
+        background-color: black;
+        color: white;
+        border-color: white;
+       }
+       #line{
+        width: 160px;
+        margin-left: 0px;
+       }
+
+    </style>
+</head>
+<body>
+
+    <h1 id="head1"> Counter using HTML </h1>
+
+    <br>
+
+
+    <div class="score">
+        
+    </div>
+   
+    <hr id="line">
+    <div class="error">
+        
+    </div>
+
+    <br>
+    <br>
+
+    <button class="btn"> Decrement </button>
+    <button class ="btn"> Increment </button>
+    <button id="clr"> Clear</button>
+
+    <script>
+
+//                     SELECTION : 
+
+        const btns = document.querySelectorAll('button'); 
+        const outp = document.querySelector(".score")
+        const err = document.querySelector(".error")
+
+//                  ADDEVENTLISTENER : 
+
+    for(let t of btns){
+        t.addEventListener("click",()=>gameply(t))
+    }
+
+
+//             FUNCTION FROM ADDEVENTLISTENER :     
+
+
+    let score = 0;
+    function gameply(clicked){
+        let press = clicked.innerText;
+        console.log(press)
+        if(press=="Increment"){
+            score++;
+            if(score>0){
+                outp.innerHTML = `Your Current Count is : ${score}`
+                outp.style.color = "white"
+                err.innerHTML =""
+            }
+            
+            
+        }
+        else if(press=="Decrement"){
+            score--;
+            if(score==0 || score<0){
+                score = 0;
+                outp.innerHTML = `Your Current Count is  : ${score}`
+                outp.style.color = "white"
+                err.innerHTML = "Error : Cannot go below 0"
+                err.style.color = "red"
+            }
+            else{
+                outp.innerHTML = `Your Current Count is : ${score}`
+                outp.style.color = "white"
+            }
+            
+        }
+        else if (press=="Clear"){
+            score=0;
+            outp.innerHTML = `Your Current Count is : ${score}`
+            outp.style.color = "white"
+        }
+    }
+
+
+
+
+    </script>
+</body>
+</html>
